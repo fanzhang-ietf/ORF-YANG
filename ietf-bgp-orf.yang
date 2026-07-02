@@ -7,37 +7,35 @@ module ietf-bgp-orf {
     prefix rt;
     reference
       "RFC 8349: A YANG Data Model for Routing Management
-       (NMDA Version).";
+                 (NMDA Version)";
   }
   import ietf-inet-types {
     prefix inet;
     reference
-      "RFC 9911: Common YANG Data Types.";
+      "RFC 9911: Common YANG Data Types";
   }
   import ietf-bgp {
     prefix bgp;
     reference
-      "RFC XXXX: YANG Model for Border Gateway Protocol (BGP-4).";
+      "RFC XXXX: YANG Model for Border Gateway Protocol (BGP-4)";
   }
 
   organization
-    "IETF Inter-Domain Routing Working Group (idr)";
+    "IETF Inter-Domain Routing (IDR) Working Group";
   contact
-    "WG Web:   <https://datatracker.ietf.org/wg/idr/>
-     WG List:  <mailto:idr@ietf.org>
+    "WG Web:   https://datatracker.ietf.org/wg/idr
+     WG List:  IDR <mailto:idr@ietf.org>
 
-     Author:  Fan Zhang
-              <zhangf52@chinatelecom.cn>
-     Author:  Aijun Wang
-              <wangaj3@chinatelecom.cn>";
+     Editor:   Fan Zhang
+               <mailto:zhangf52@chinatelecom.cn>
+     Editor:   Aijun Wang
+               <mailto:wangaj3@chinatelecom.cn>
+     Editor:   Changwang Lin
+               <mailto:linchangwang.04414@h3c.com>";
   description
-    "This YANG module defines a generic configurtion and management 
-     for the BGP Outbound Route Filtering (ORF). Type-specific ORF  
+    "This YANG module defines a generic configurtion and management
+     for the BGP Outbound Route Filtering (ORF). Type-specific ORF
      modules may augment this module.
-
-     The model is based on YANG 1.1 as defined in RFC 7950 and
-     conforms to Network Management Datastore Architecture (NMDA)
-     as defined in RFC 8342.
 
      The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL', 'SHALL
      NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED', 'NOT RECOMMENDED',
@@ -55,17 +53,20 @@ module ietf-bgp-orf {
      Relating to IETF Documents
      (https://trustee.ietf.org/license-info).
 
-     This version of this YANG module is part of RFC XXXX
-     (https://www.rfc-editor.org/info/rfcXXXX); see the RFC itself
-     for full legal notices.";
+     All revisions of IETF and IANA published modules can be found
+     at the YANG Parameters registry group
+     (https://www.iana.org/assignments/yang-parameters).
+
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
 
   revision 2026-06-18 {
     description
       "Initial revision.";
     reference
-      "RFC 5291: Outbound Route Filtering Capability for BGP-4.
-       RFC 5292: Address-Prefix-Based Outbound Route Filter for 
-       BGP-4.";
+      "RFC 5291: Outbound Route Filtering Capability for BGP-4
+       RFC 5292: Address-Prefix-Based Outbound Route Filter for
+                 BGP-4";
   }
 
   /*
@@ -76,8 +77,8 @@ module ietf-bgp-orf {
     description
       "Support for Address Prefix ORF for BGP-4.";
     reference
-      "RFC 5292: Address-Prefix-Based Outbound Route Filter for 
-       BGP-4.";
+      "RFC 5292: Address-Prefix-Based Outbound Route Filter for
+                 BGP-4";
   }
 
   /*
@@ -88,7 +89,7 @@ module ietf-bgp-orf {
     description
       "Base ORF type.";
     reference
-      "RFC 5291: Outbound Route Filtering Capability for BGP-4.";
+      "RFC 5291: Outbound Route Filtering Capability for BGP-4";
   }
 
   identity address-prefix-orf {
@@ -96,8 +97,8 @@ module ietf-bgp-orf {
     description
       "Address Prefix ORF.";
     reference
-      "RFC 5292: Address-Prefix-Based Outbound Route Filter for 
-       BGP-4.";
+      "RFC 5292: Address-Prefix-Based Outbound Route Filter for
+                 BGP-4";
   }
 
   identity vpn-prefix-orf {
@@ -105,8 +106,8 @@ module ietf-bgp-orf {
     description
       "VPN Prefix ORF.";
     reference
-      "RFC XXXX: VPN Prefix Outbound Route Filter (VPN Prefix ORF) 
-       for BGP-4.";
+      "RFC XXXX: VPN Prefix Outbound Route Filter (VPN Prefix ORF)
+                 for BGP-4";
   }
 
   /*
@@ -138,7 +139,7 @@ module ietf-bgp-orf {
       "ORF Send/Receive field.";
     reference
       "RFC 5291: Outbound Route Filtering Capability for BGP-4,
-       Section 5.";
+                 Section 5";
   }
 
   /*
@@ -169,7 +170,7 @@ module ietf-bgp-orf {
     }
     reference
       "RFC 5291: Outbound Route Filtering Capability for BGP-4,
-       Section 5.";
+                 Section 5";
   }
 
   grouping address-prefix-orf-entries {
@@ -188,7 +189,7 @@ module ietf-bgp-orf {
         type enumeration {
           enum permit {
             description
-              "Permit the peer to pass updates for the set of routes 
+              "Permit the peer to pass updates for the set of routes
                that match the ORF entry.";
           }
           enum deny {
@@ -218,8 +219,8 @@ module ietf-bgp-orf {
            A value of 0 indicates that the field is unspecified.";
       }
       reference
-        "RFC 5292: Address-Prefix-Based Outbound Route Filter for 
-         BGP-4, Section 2.";
+        "RFC 5292: Address-Prefix-Based Outbound Route Filter for
+                   BGP-4, Section 2";
     }
   }
 
@@ -228,12 +229,12 @@ module ietf-bgp-orf {
    */
 
   augment
-    "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  + "/bgp:bgp/bgp:neighbors/bgp:neighbor/bgp:afi-safis/bgp:afi-safi"
-  + "/bgp:ipv4-unicast" {
+    "/rt:routing/rt:control-plane-protocols"
+  + "/rt:control-plane-protocol/bgp:bgp/bgp:neighbors/bgp:neighbor"
+  + "/bgp:afi-safis/bgp:afi-safi/bgp:ipv4-unicast" {
     if-feature "address-prefix-orf";
     description
-      "Address Prefix ORF augmentation for the IPv4 unicast address 
+      "Address Prefix ORF augmentation for the IPv4 unicast address
        family of a BGP neighbor.";
     uses orf-capability;
     container address-prefix-orf-entries-sent {
@@ -264,12 +265,12 @@ module ietf-bgp-orf {
   }
 
   augment
-    "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  + "/bgp:bgp/bgp:neighbors/bgp:neighbor/bgp:afi-safis/bgp:afi-safi"
-  + "/bgp:ipv6-unicast" {
+    "/rt:routing/rt:control-plane-protocols"
+  + "/rt:control-plane-protocol/bgp:bgp/bgp:neighbors/bgp:neighbor"
+  + "/bgp:afi-safis/bgp:afi-safi/bgp:ipv6-unicast" {
     if-feature "address-prefix-orf";
     description
-      "Address Prefix ORF augmentation for the IPv6 unicast address 
+      "Address Prefix ORF augmentation for the IPv6 unicast address
        family of a BGP neighbor.";
     uses orf-capability;
     container address-prefix-orf-entries-sent {
@@ -300,9 +301,9 @@ module ietf-bgp-orf {
   }
 
   augment
-    "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  + "/bgp:bgp/bgp:peer-groups/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
-  + "/bgp:ipv4-unicast" {
+    "/rt:routing/rt:control-plane-protocols"
+  + "/rt:control-plane-protocol/bgp:bgp/bgp:peer-groups"
+  + "/bgp:peer-group/bgp:afi-safis/bgp:afi-safi/bgp:ipv4-unicast" {
     if-feature "address-prefix-orf";
     description
       "Address Prefix ORF augmentation for the IPv4 unicast address
@@ -331,9 +332,9 @@ module ietf-bgp-orf {
   }
 
   augment
-    "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  + "/bgp:bgp/bgp:peer-groups/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
-  + "/bgp:ipv6-unicast" {
+    "/rt:routing/rt:control-plane-protocols"
+  + "/rt:control-plane-protocol/bgp:bgp/bgp:peer-groups"
+  + "/bgp:peer-group/bgp:afi-safis/bgp:afi-safi/bgp:ipv6-unicast" {
     if-feature "address-prefix-orf";
     description
       "Address Prefix ORF augmentation for the IPv6 unicast address

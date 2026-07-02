@@ -13,53 +13,41 @@ module ietf-bgp-vpn-prefix-orf {
     prefix rt;
     reference
       "RFC 8349: A YANG Data Model for Routing Management
-       (NMDA Version).";
-  }  
-  import ietf-network-instance {
-    prefix ni;
-    reference
-      "RFC 8529: YANG Data Model for Network Instances.";
+                 (NMDA Version)";
   }
   import ietf-inet-types {
     prefix inet;
     reference
-      "RFC 9911: Common YANG Data Types.";
-  }
-  import ietf-yang-types {
-    prefix yang;
-    reference
-      "RFC 9911: Common YANG Data Types.";
+      "RFC 9911: Common YANG Data Types";
   }
   import ietf-bgp {
     prefix bgp;
     reference
-      "RFC XXXX: YANG Model for Border Gateway Protocol (BGP-4).";
+      "RFC XXXX: YANG Model for Border Gateway Protocol (BGP-4)";
   }
   import ietf-bgp-orf {
     prefix orf;
     reference
-      "RFC XXXX: YANG Data Model for BGP Outbound Route Filtering.";
+      "RFC XXXX: YANG Data Model for BGP Outbound Route Filtering";
   }  
 
   organization
-    "IETF Inter-Domain Routing Working Group (idr)";
+    "IETF Inter-Domain Routing (IDR) Working Group";
 
   contact
-    "WG Web:   <https://datatracker.ietf.org/wg/idr/>
-     WG List:  <mailto:idr@ietf.org>
+    "WG Web:   https://datatracker.ietf.org/wg/idr
+     WG List:  IDR <mailto:idr@ietf.org>
 
-     Author:  Fan Zhang
-              <zhangf52@chinatelecom.cn>
-     Author:  Aijun Wang
-              <wangaj3@chinatelecom.cn>";
+     Editor:   Fan Zhang
+               <mailto:zhangf52@chinatelecom.cn>
+     Editor:   Aijun Wang
+               <mailto:wangaj3@chinatelecom.cn>
+     Editor:   Changwang Lin
+               <mailto:linchangwang.04414@h3c.com>";
   description
-    "This YANG module defines a generic configuration and operational 
+    "This YANG module defines a generic configuration and operational
      state for VPN Prefix ORF, including VPN Prefix ORF quota and
      overload handling.
-
-     The model is based on YANG 1.1 as defined in RFC 7950 and
-     conforms to Network Management Datastore Architecture (NMDA)
-     as defined in RFC 8342.
 
      The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL', 'SHALL
      NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED', 'NOT RECOMMENDED',
@@ -77,16 +65,19 @@ module ietf-bgp-vpn-prefix-orf {
      Relating to IETF Documents
      (https://trustee.ietf.org/license-info).
 
-     This version of this YANG module is part of RFC XXXX
-     (https://www.rfc-editor.org/info/rfcXXXX); see the RFC itself
-     for full legal notices.";
+     All revisions of IETF and IANA published modules can be found
+     at the YANG Parameters registry group
+     (https://www.iana.org/assignments/yang-parameters).
+
+     This version of this YANG module is part of RFC XXXX; see
+     the RFC itself for full legal notices.";
 
   revision 2026-06-18 {
     description
       "Initial revision.";
     reference
-      "RFC XXXX: VPN Prefix Outbound Route Filter (VPN Prefix ORF) 
-       for BGP-4.";
+      "RFC XXXX: VPN Prefix Outbound Route Filter (VPN Prefix ORF)
+                 for BGP-4";
   }
 
   /*
@@ -97,8 +88,8 @@ module ietf-bgp-vpn-prefix-orf {
     description
       "Support for VPN Prefix ORF for BGP-4.";
     reference
-      "RFC XXXX: VPN Prefix Outbound Route Filter (VPN Prefix ORF) 
-       for BGP-4.";    
+      "RFC XXXX: VPN Prefix Outbound Route Filter (VPN Prefix ORF)
+                 for BGP-4";    
   }
   
   /*
@@ -111,7 +102,7 @@ module ietf-bgp-vpn-prefix-orf {
       "VPN Prefix ORF.";
     reference
       "RFC XXXX: VPN Prefix Outbound Route Filter (VPN Prefix ORF)
-       for BGP-4.";    
+                 for BGP-4";    
   }
 
   /*
@@ -129,17 +120,17 @@ module ietf-bgp-vpn-prefix-orf {
       enum withdraw-overload-routes {
         value 0;
         description
-          "The receiver of VPN Prefix ORF message MUST withdraw all 
-            previously advertised overload VPN routes that match the 
-            ORF's type-specific part.";
+          "The receiver of VPN Prefix ORF message MUST withdraw all
+           previously advertised overload VPN routes that match the
+           ORF's type-specific part.";
       }
       enum refuse-overload-routes {
         value 1;
         description
-          "The sender of the VPN Prefix ORF message will refuse to 
-            accept VPN routes matching the overload criteria and that 
-            the receiver of the VPN Prefix ORF message MUST NOT 
-            announce VPN routes matching the overload criteria.";
+          "The sender of the VPN Prefix ORF message will refuse to
+           accept VPN routes matching the overload criteria and that
+           the receiver of the VPN Prefix ORF message MUST NOT
+           announce VPN routes matching the overload criteria.";
       }
       
     }
@@ -147,7 +138,7 @@ module ietf-bgp-vpn-prefix-orf {
       "Overload VPN routes process method";
     reference
       "RFC XXXX: VPN Prefix Outbound Route Filter (VPN Prefix ORF)
-       for BGP-4,Section 4.";      
+                 for BGP-4,Section 4";      
   }
 
   /*
@@ -191,8 +182,8 @@ module ietf-bgp-vpn-prefix-orf {
             "Overload VPN routes process method";
         }
         reference
-          "RFC XXXX: VPN Prefix Outbound Route Filter (VPN Prefix ORF)
-           for BGP-4, Section 7.2.";
+          "RFC XXXX: VPN Prefix Outbound Route Filter
+                     (VPN Prefix ORF) for BGP-4, Section 7.2";
       }
     }
   }
@@ -207,8 +198,8 @@ module ietf-bgp-vpn-prefix-orf {
       leaf sequence {        
         type uint32;
         description
-          "The relative ordering of the entry among all the VPN Prefix
-           ORF entries.";
+          "The relative ordering of the entry among all the VPN
+           Prefix ORF entries.";
       }
       leaf match {
         type enumeration {
@@ -219,13 +210,14 @@ module ietf-bgp-vpn-prefix-orf {
           }
           enum deny {
             description
-              "Deny the peer to pass the updates for the set of routes
+              "Deny the peer to pass updates for the set of routes
                that match the ORF entry.";
           }
         }
         description
-          "Specifiying whether this entry is PERMIT or DENY. VPN Prefix 
-           ORF entry is only valid when its Match field is DENY.";
+          "Specifiying whether this entry is PERMIT or DENY. VPN
+           Prefix ORF entry is only valid when its Match field is
+           DENY.";
       }
       leaf rd {
         type rt-types:route-distinguisher;
@@ -236,8 +228,8 @@ module ietf-bgp-vpn-prefix-orf {
         description
           "Overload VPN routes process method";
         reference
-          "RFC XXXX: VPN Prefix Outbound Route Filter (VPN Prefix ORF)
-           for BGP-4, Section 4.";     
+          "RFC XXXX: VPN Prefix Outbound Route Filter
+                     (VPN Prefix ORF) for BGP-4, Section 4";
       }
       choice source-pe {
         description
@@ -267,7 +259,8 @@ module ietf-bgp-vpn-prefix-orf {
           }
         }
         reference
-          "Section 4.1.";             
+          "RFC XXXX: VPN Prefix Outbound Route Filter
+                     (VPN Prefix ORF) for BGP-4, Section 4.1";
       }      
       leaf-list route-target {
         type rt-types:route-target;
@@ -275,16 +268,18 @@ module ietf-bgp-vpn-prefix-orf {
         description
           "Optional Route Target match criteria of the VPN Prefix
            ORF entry. When present, only VPN routes carrying one
-           of the specified Route Target values are matched.";        
+           of the specified Route Target values are matched.";
         reference
-          "Section 4.2.";             
+          "RFC XXXX: VPN Prefix Outbound Route Filter
+                     (VPN Prefix ORF) for BGP-4, Section 4.2";
       }
       leaf route-type {
         type uint8;
         description
-          "The route type value carried in the Route Type TLV.";   
+          "The route type value carried in the Route Type TLV.";
         reference
-          "Section 4.3.";     
+          "RFC XXXX: VPN Prefix Outbound Route Filter
+                     (VPN Prefix ORF) for BGP-4, Section 4.3";
       }  
     }
   }
@@ -294,13 +289,13 @@ module ietf-bgp-vpn-prefix-orf {
    */  
 
   augment 
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:neighbors/bgp:neighbor/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l3vpn-ipv4-unicast"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:neighbors/bgp:neighbor"
+  +"/bgp:afi-safis/bgp:afi-safi/bgp:l3vpn-ipv4-unicast" {
     if-feature "vpn-prefix-orf";
     description
-      "VPN Prefix ORF augmentation for the L3VPN IPv4 unicast address
-       family of a BGP neighbor.";
+      "VPN Prefix ORF augmentation for the L3VPN IPv4 unicast
+       address family of a BGP neighbor.";
     uses orf:orf-capability;
     uses vpn-prefix-orf-quotas;
     container vpn-prefix-orf-entries-sent {
@@ -319,13 +314,13 @@ module ietf-bgp-vpn-prefix-orf {
   }  
   
   augment
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:neighbors/bgp:neighbor/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l3vpn-ipv6-unicast"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:neighbors/bgp:neighbor"
+  +"/bgp:afi-safis/bgp:afi-safi/bgp:l3vpn-ipv6-unicast" {
     if-feature "vpn-prefix-orf";        
     description
-      "VPN Prefix ORF augmentation for the L3VPN IPv6 unicast address
-       family of a BGP neighbor.";
+      "VPN Prefix ORF augmentation for the L3VPN IPv6 unicast
+       address family of a BGP neighbor.";
     uses orf:orf-capability;
     uses vpn-prefix-orf-quotas;
     container vpn-prefix-orf-entries-send {
@@ -344,13 +339,13 @@ module ietf-bgp-vpn-prefix-orf {
   }
 
   augment 
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:neighbors/bgp:neighbor/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l3vpn-ipv4-multicast"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:neighbors/bgp:neighbor"
+  +"/bgp:afi-safis/bgp:afi-safi/bgp:l3vpn-ipv4-multicast" {
     if-feature "vpn-prefix-orf";
     description
-      "VPN Prefix ORF augmentation for the L3VPN IPv4 multicast address
-       family of a BGP neighbor.";
+      "VPN Prefix ORF augmentation for the L3VPN IPv4 multicast
+       address family of a BGP neighbor.";
     uses orf:orf-capability;
     uses vpn-prefix-orf-quotas;
     container vpn-prefix-orf-entries-sent {
@@ -369,13 +364,13 @@ module ietf-bgp-vpn-prefix-orf {
   }  
   
   augment
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:neighbors/bgp:neighbor/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l3vpn-ipv6-multicast"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:neighbors/bgp:neighbor"
+  +"/bgp:afi-safis/bgp:afi-safi/bgp:l3vpn-ipv6-multicast" {
     if-feature "vpn-prefix-orf";        
     description
-      "VPN Prefix ORF augmentation for the L3VPN IPv6 multicast address
-       family of a BGP neighbor.";
+      "VPN Prefix ORF augmentation for the L3VPN IPv6 multicast
+       address family of a BGP neighbor.";
     uses orf:orf-capability;
     uses vpn-prefix-orf-quotas;
     container vpn-prefix-orf-entries-send {
@@ -394,9 +389,9 @@ module ietf-bgp-vpn-prefix-orf {
   }
 
   augment
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:neighbors/bgp:neighbor/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l2vpn-vpls"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:neighbors/bgp:neighbor"
+  +"/bgp:afi-safis/bgp:afi-safi/bgp:l2vpn-vpls" {
     if-feature "vpn-prefix-orf";
     description
       "VPN Prefix ORF augmentation for the L2VPN VPLS address family
@@ -419,9 +414,9 @@ module ietf-bgp-vpn-prefix-orf {
   }  
   
   augment
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:neighbors/bgp:neighbor/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l2vpn-evpn"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:neighbors/bgp:neighbor"
+  +"/bgp:afi-safis/bgp:afi-safi/bgp:l2vpn-evpn" {
     if-feature "vpn-prefix-orf";        
     description
       "VPN Prefix ORF augmentation for the L2VPN EVPN address family
@@ -444,54 +439,58 @@ module ietf-bgp-vpn-prefix-orf {
   }   
   
   augment
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:peer-groups/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l3vpn-ipv4-unicast"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:peer-groups"
+  +"/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
+  +"/bgp:l3vpn-ipv4-unicast" {
     if-feature "vpn-prefix-orf";
     description
-      "VPN Prefix ORF augmentation for the L3VPN IPv4 unicast address
-       family of a BGP peer group.";
+      "VPN Prefix ORF augmentation for the L3VPN IPv4 unicast
+       address family of a BGP peer group.";
     uses orf:orf-capability;
     uses vpn-prefix-orf-quotas;
   }  
   
   augment
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:peer-groups/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l3vpn-ipv6-unicast"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:peer-groups"
+  +"/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
+  +"/bgp:l3vpn-ipv6-unicast" {
     if-feature "vpn-prefix-orf";        
     description
-      "VPN Prefix ORF augmentation for the L3VPN IPv6 unicast address
-       family of a BGP peer group.";
+      "VPN Prefix ORF augmentation for the L3VPN IPv6 unicast
+       address family of a BGP peer group.";
     uses orf:orf-capability;
     uses vpn-prefix-orf-quotas;
   }
   augment
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:peer-groups/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l3vpn-ipv4-multicast"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:peer-groups"
+  +"/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
+  +"/bgp:l3vpn-ipv4-multicast" {
     if-feature "vpn-prefix-orf";
     description
-      "VPN Prefix ORF augmentation for the L3VPN IPv4 multicast address
-       family of a BGP peer group.";
+      "VPN Prefix ORF augmentation for the L3VPN IPv4 multicast
+       address family of a BGP peer group.";
     uses orf:orf-capability;
     uses vpn-prefix-orf-quotas;
   }  
   augment
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:peer-groups/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l3vpn-ipv6-multicast"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:peer-groups"
+  +"/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
+  +"/bgp:l3vpn-ipv6-multicast" {
     if-feature "vpn-prefix-orf";        
     description
-      "VPN Prefix ORF augmentation for the L3VPN IPv6 multicast address
-       family of a BGP peer group.";
+      "VPN Prefix ORF augmentation for the L3VPN IPv6 multicast
+       address family of a BGP peer group.";
     uses orf:orf-capability;
     uses vpn-prefix-orf-quotas;
   }  
   augment
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:peer-groups/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l2vpn-vpls"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:peer-groups"
+  +"/bgp:peer-group/bgp:afi-safis/bgp:afi-safi/bgp:l2vpn-vpls" {
     if-feature "vpn-prefix-orf";
     description
       "VPN Prefix ORF augmentation for the L2VPN VPLS address family
@@ -501,9 +500,9 @@ module ietf-bgp-vpn-prefix-orf {
   }  
   
   augment
-   "/rt:routing/rt:control-plane-protocols/rt:control-plane-protocol"
-  +"/bgp:bgp/bgp:peer-groups/bgp:peer-group/bgp:afi-safis/bgp:afi-safi"
-  +"/bgp:l2vpn-evpn"{ 
+   "/rt:routing/rt:control-plane-protocols"
+  +"/rt:control-plane-protocol/bgp:bgp/bgp:peer-groups"
+  +"/bgp:peer-group/bgp:afi-safis/bgp:afi-safi/bgp:l2vpn-evpn" {
     if-feature "vpn-prefix-orf";        
     description
       "VPN Prefix ORF augmentation for the L2VPN EVPN address family
