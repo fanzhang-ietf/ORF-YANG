@@ -1,8 +1,0 @@
-*
-
-!.gitignore
-!README.md
-
-!draft-*.xml
-!ietf-bgp-orf.yang
-!ietf-bgp-vpn-prefix-orf.yang
