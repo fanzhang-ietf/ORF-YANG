@@ -1633,7 +1633,7 @@ module ietf-bgp-vpn-prefix-orf {
     </references>
 
     <!-- appendix -->
-    <section anchor="datamodel" title="Data Model Examples">
+    <!-- <section anchor="datamodel" title="Data Model Examples">
       <section anchor="configAPORF" title="Configuration of Address Prefix ORF Entry">
         <t>TBD. </t>
         <sourcecode type="xml" markers="false"><![CDATA[ 
@@ -1664,7 +1664,7 @@ module ietf-bgp-vpn-prefix-orf {
 
       </section>
 
-    </section>
+    </section> -->
 
   </back>
 </rfc>
